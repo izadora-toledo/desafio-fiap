@@ -1,17 +1,17 @@
 <?php
-require "../config/conexao.php"; 
+require_once __DIR__ . '/../config/conexao.php';
 
 class Aluno {
     private $nome;
     private $data_nascimento;
-    private $usuario;
+    private $usuario_cpf;
     private $email; 
     private $telefone; 
 
-    public function __construct($nome, $data_nascimento, $usuario, $email = null, $telefone = null) {
+    public function __construct($nome, $data_nascimento, $usuario_cpf, $email = null, $telefone = null) {
         $this->nome = $nome;
         $this->data_nascimento = $data_nascimento;
-        $this->usuario = $usuario;
+        $this->usuario_cpf = $usuario_cpf;
         $this->email = $email; 
         $this->telefone = $telefone; 
     }
@@ -25,17 +25,17 @@ class Aluno {
         }
 
         // Valida se todos os campos obrigatórios foram preenchidos.
-        if (empty($this->nome) || empty($this->data_nascimento) || empty($this->usuario) || empty($this->email) || empty($this->telefone)) {
+        if (empty($this->nome) || empty($this->data_nascimento) || empty($this->usuario_cpf) || empty($this->email) || empty($this->telefone)) {
             throw new Exception("Todos os campos são obrigatórios.");
         }       
 
         try {          
-            $sql = "INSERT INTO alunos (nome, data_nascimento, usuario, email, telefone) VALUES (:nome, :data_nascimento, :usuario, :email, :telefone)";
+            $sql = "INSERT INTO alunos (nome, data_nascimento, usuario_cpf, email, telefone) VALUES (:nome, :data_nascimento, :usuario_cpf, :email, :telefone)";
             $stmt = $conn->prepare($sql);
           
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':data_nascimento', $this->data_nascimento);
-            $stmt->bindParam(':usuario', $this->usuario);           
+            $stmt->bindParam(':usuario_cpf', $this->usuario_cpf);           
             $stmt->bindParam(':email', $this->email);           
             $stmt->bindParam(':telefone', $this->telefone);           
             $stmt->execute();            
@@ -44,6 +44,6 @@ class Aluno {
         } catch (PDOException $e) {           
             throw new Exception("Erro ao inserir aluno: " . $e->getMessage());
         }
-    }
+    }    
 }
 ?>

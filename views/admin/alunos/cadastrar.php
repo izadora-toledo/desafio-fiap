@@ -1,10 +1,10 @@
 <?php 
 $title = "Cadastrar alunos";
-require '../../../public/includes/header.php'; 
+include "../../../public/includes/header.php"; 
 ?>
-<div class="form-cadastro-alunos mt-5">
+<div class="cadastro-alunos mt-5">
     <h2>Cadastrar Aluno</h2>
-    <form>
+    <form id="form-cadastro-alunos">
         <div class="row mb-3">
             <div class="col-md-8">
                 <div class="form-group">
@@ -24,7 +24,7 @@ require '../../../public/includes/header.php';
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="usuario">Usuário (CPF):</label>
-                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="CPF do aluno" required>
+                    <input type="text" class="form-control" id="usuario_cpf" name="usuario_cpf" placeholder="CPF do aluno" maxlength="14" required>
                 </div>
             </div>
             <div class="col-md-6">
@@ -39,11 +39,11 @@ require '../../../public/includes/header.php';
                     <input type="tel" class="form-control" id="telefone" name="telefone" required>
                 </div>
             </div>
-            
         </div>
         <div class="btn-cadastrar">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </div>        
     </form>
+    <div id="mensagem-retorno-cadastro" class="mt-3"></div>
 </div>
 <?php require '../../../public/includes/footer.php'; ?>

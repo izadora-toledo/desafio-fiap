@@ -1,5 +1,6 @@
 <?php 
-    require "header.php"; 
+    $title = "Login - Painel Administrativo"; 
+    include "../../../public/includes/header.php"; 
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -10,9 +11,9 @@
                     <h5 class="mt-4">Fazemos acontecer!</h5>
                     <p>Sua vida acadêmica em um só lugar.</p>                    
                 </div>
-                <div class="formulario-login col-md-8">
+                <div class="login col-md-8">
                     <h2>Painel Administrativo</h2>
-                    <form>
+                    <form class="form-login">
                         <input type="text" id="usuario" name="usuario" placeholder="usuário" required>
                         <div class="container-senha">
                             <input type="password" id="senha" name="senha" placeholder="senha" required>
@@ -26,5 +27,5 @@
         </div>
     </div>
 </div>
-<?php require "footer.php"; ?>
+<?php require "../../../public/includes/footer.php"; ?>
 
