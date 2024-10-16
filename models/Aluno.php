@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
 class Aluno {
     private $nome;

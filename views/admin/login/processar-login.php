@@ -1,6 +1,6 @@
 <?php 
 header('Content-Type: application/json');
-include "../../../config/conexao.php"; 
+require "../../../config/conexao.php"; 
 
 session_start(); 
 
