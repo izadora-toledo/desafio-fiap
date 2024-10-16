@@ -3,14 +3,14 @@
 ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="container-login col-lg-8 col-md-10 col-sm-12">
-            <div class="row">
-                <div class="background-login col-md-5">
+        <div class="container-login">
+            <div class="row col-md-12">
+                <div class="background-login col-md-4">
                     <h2>FIAP</h2>
                     <h5 class="mt-4">Fazemos acontecer!</h5>
-                    <p>Sua vida acadêmica em um só lugar</p>                    
+                    <p>Sua vida acadêmica em um só lugar.</p>                    
                 </div>
-                <div class="formulario-login col-md-7">
+                <div class="formulario-login col-md-8">
                     <h2>Painel Administrativo</h2>
                     <form>
                         <input type="text" id="usuario" name="usuario" placeholder="usuário" required>
