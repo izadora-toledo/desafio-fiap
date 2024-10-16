@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 INSERT INTO usuarios (usuario, senha, email) VALUES
-('admin', '5ef12d0ce2d007163ba03f6bfe350431', 'admin@fiap.com');
+('admin', '$2y$10$jcKgOPufI3fyrOzlJnhmnugg08yauNfutBwNillioN2Byg3/tgO7.', 'admin@fiap.com');

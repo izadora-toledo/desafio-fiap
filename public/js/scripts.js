@@ -10,4 +10,32 @@ $(document).ready(function () {
         // Alterna o ícone do cadeado entre aberto e fechado
         $(this).toggleClass('fa-lock fa-lock-open');
     });
+
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+
+        var usuario = $('#usuario').val();
+        var senha = $('#senha').val();
+
+        $.ajax({
+            url: 'processar-login.php', 
+            type: 'POST',
+            data: {
+                usuario: usuario,
+                senha: senha
+            },
+            success: function (response) {          
+                if (response.success) {
+                    window.location.href = response.redirect;
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Erro AJAX:", textStatus, errorThrown);
+                alert('Erro ao tentar realizar login.');
+            }
+        });
+    });
+
 });
