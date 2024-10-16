@@ -139,4 +139,11 @@ body {
     color: transparent !important;  
 }
 
+footer {
+    margin-top: auto;
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;         
+    font-size: 12px;  
+}
 
