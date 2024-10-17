@@ -35,17 +35,17 @@ $alunos = $alunoController->listaAlunos();
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
                         <td>                
                             <button type="button" class="btn btn-sm" id="btn-editar" 
-                                    data-id="<?= $aluno['id']; ?>" 
-                                    data-nome="<?= ($aluno['nome']); ?>"
-                                    data-data-nascimento="<?= ($aluno['data_nascimento']); ?>"
-                                    data-usuario-cpf="<?= ($aluno['usuario_cpf']); ?>"
-                                    data-email="<?= ($aluno['email']); ?>"
-                                    data-telefone="<?= ($aluno['telefone']); ?>"
-                                    data-toggle="modal" 
-                                    data-target="#modal-editar-aluno">
-                                    Editar
+                                data-id="<?= $aluno['id']; ?>" 
+                                data-nome="<?= ($aluno['nome']); ?>"
+                                data-data-nascimento="<?= ($aluno['data_nascimento']); ?>"
+                                data-usuario-cpf="<?= ($aluno['usuario_cpf']); ?>"
+                                data-email="<?= ($aluno['email']); ?>"
+                                data-telefone="<?= ($aluno['telefone']); ?>"
+                                data-toggle="modal" 
+                                data-target="#modal-editar-aluno">
+                                Editar
                             </button>                     
-                            <button type="button" class="btn btn-sm btn-excluir" data-id="<?= $aluno['id']; ?>">Excluir</button>
+                            <button type="button" class="btn btn-sm" id="btn-excluir" data-id="<?= $aluno['id']; ?>">Excluir</button>
                         </td>                
                     </tr>
                 <?php } ?>

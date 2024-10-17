@@ -345,7 +345,7 @@ footer {
 }
 
 /* Estilização da tela de listar alunos */
-.listar-alunos h2 {
+.listar-alunos h2, .listar-turmas h2 {
     text-align: center;
     margin-bottom: 50px;
 }

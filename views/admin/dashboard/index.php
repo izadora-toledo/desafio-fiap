@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../../controllers/AlunoController.php';
+require_once __DIR__ . '/../../../controllers/TurmaController.php';
 require_once '../../../public/includes/funcoes.php'; 
     session_start();
 

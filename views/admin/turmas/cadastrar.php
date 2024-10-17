@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="curso">Curso:</label>
                     <select class="form-control" id="curso" name="curso" required>
-                        <option value="">Selecione o Curso</option>
+                        <option value="">-- Selecione o Curso --</option>
                         <option value="Desenvolvimento Web">Desenvolvimento Web</option>
                         <option value="Análise de Dados">Análise de Dados</option>
                         <option value="Marketing Digital">Marketing Digital</option>
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="turno">Turno:</label>
                     <select class="form-control" id="turno" name="turno" required>
-                        <option value="">Selecione o Turno</option>
+                        <option value="">-- Selecione o Turno --</option>
                         <option value="manhã">Manhã</option>
                         <option value="tarde">Tarde</option>
                         <option value="noite">Noite</option>
