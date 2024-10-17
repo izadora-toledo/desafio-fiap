@@ -39,12 +39,9 @@ $alunos = $alunoController->listaAlunos();
                         <td><?= htmlspecialchars($aluno['usuario_cpf']) ?></td>
                         <td><?= htmlspecialchars($aluno['email']) ?></td>
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
-                        <td>                      
-                        <td>
-                        <button class="btn btn-sm btn-editar" data-id="<?= $aluno['id']; ?>">Editar</button>                 
-                        </td>
-                    
-                       
+                        <td>                     
+                            <button class="btn btn-sm btn-editar" data-id="<?= $aluno['id']; ?>">Editar</button>                 
+                        </td>                 
                     </tr>
                 <?php } ?>
             </tbody>
