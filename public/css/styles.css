@@ -350,7 +350,7 @@ footer {
     margin-bottom: 50px;
 }
 
-.btn-editar {
+#btn-editar {
     background:#bd18e6 ;
     color: white;
 }
@@ -368,6 +368,22 @@ footer {
 .close {
     border-radius: 45%;
 }
+
+.msg-erro {
+    color: red;
+    text-align: center;
+}
+
+.msg-sucesso {
+    color:chartreuse;
+    text-align: center;
+}
+
+.msg-sem-alteracao {
+    color:#bd18e6;
+    text-align: center;
+}
+
 
 
 

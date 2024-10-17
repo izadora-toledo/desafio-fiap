@@ -19,14 +19,16 @@ class AlunoController {
         } catch (Exception $e) {
             return false;
         }
-    }   
-        
-    public function buscaAlunoPorId($id) {
+    }  
+    
+    public function editaAluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone, $id) {
         try {
-            return Aluno::buscarAlunoPorId($id);
+            $aluno = new Aluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone, $id);
+            return $aluno->atualizarAluno();
         } catch (Exception $e) {
             return false;
         }
-    }    
+    }     
+      
 }
 ?>

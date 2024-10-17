@@ -15,7 +15,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="" required>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -29,7 +29,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="usuario_cpf">Usuário (CPF):</label>
-                                <input type="text" class="form-control mt-2" id="usuario_cpf" name="usuario_cpf" placeholder="CPF do aluno" maxlength="14" required>
+                                <input type="text" class="form-control mt-2" id="usuario_cpf" name="usuario_cpf" placeholder="CPF 000.000.000-00" maxlength="14" required>
                             </div>
                         </div>
                         <div class="col-md-6">

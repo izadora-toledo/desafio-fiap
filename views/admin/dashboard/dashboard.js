@@ -56,37 +56,29 @@ $(document).ready(function () {
     /* CADASTRO ALUNO */
     // Processa o cadastro do aluno
     $('#form-cadastro-alunos').on('submit', function (e) {
-        e.preventDefault();
-
-        const $form = $('#form-cadastro-alunos');
-        const $button = $(this);
-
-        if ($button.prop('disabled')) return;  
-        $button.prop('disabled', true);
-
-        $('#mensagem-retorno-cadastro').html('');
-
+        e.preventDefault();      
+    
+        $('#mensagem-retorno-cadastro').html('');   
+        var form = this; // Armazena uma referência ao formulário
+    
         $.ajax({
             type: "POST",
             url: "../alunos/action.php",
-            data: $form.serialize() + '&acao=cadastrar',
+            data: $(this).serialize() + '&acao=cadastrar',
             dataType: "json", 
             success: function (response) {
                 if (response.error) {                   
                     $('#mensagem-retorno-cadastro').html('<div style="color:red;">' + response.error + '</div>');                
                 } else {                   
                     $('#mensagem-retorno-cadastro').html('<div style="color:green;">' + response.message + '</div>');
-                    $form[0].reset(); // Reseta o formulário somente se o cadastro for bem-sucedido
+                    form.reset(); // Reseta o formulário usando a referência armazenada
                 }
             },
             error: function (xhr, status, error) {
                 $('#mensagem-retorno-cadastro').html('<div style="color:red;">Erro: ' + error + '</div>');
-            },
-            complete: function () {              
-                $button.prop('disabled', false);
             }
         });
-    });   
+    });
 
     // Máscara de CPF
     $('#usuario_cpf').on('input', function() {
@@ -106,4 +98,51 @@ $(document).ready(function () {
             $(this).val(cpf);
         }
     });
+
+    
+    $(document).on('click', '#btn-editar', function() {
+      
+        var id = $(this).data('id');
+        var nome = $(this).data('nome');
+        var dataNascimento = $(this).data('data-nascimento');
+        var usuarioCpf = $(this).data('usuario-cpf');
+        var email = $(this).data('email');
+        var telefone = $(this).data('telefone');    
+     
+        $('#modal-editar-aluno #id').val(id); 
+        $('#modal-editar-aluno #nome').val(nome);
+        $('#modal-editar-aluno #data_nascimento').val(dataNascimento);
+        $('#modal-editar-aluno #usuario_cpf').val(usuarioCpf);
+        $('#modal-editar-aluno #email').val(email);
+        $('#modal-editar-aluno #telefone').val(telefone);    
+      
+        $('#modal-editar-aluno').modal('show'); 
+    });
+    
+    $('.btn-fechar').on('click', function() {
+        $('#modal-editar-aluno').modal('hide');
+    });
+
+    // Envio do formulário para editar o aluno
+    $('#form-editar-aluno').on('submit', function(event) {
+        event.preventDefault();        
+    
+        $.ajax({
+            url: '../alunos/action.php', 
+            type: 'POST',
+            data: $(this).serialize() + '&acao=editar',
+            dataType: 'json',
+            success: function(data) {            
+                if (data.message) {
+                    $('#mensagem-retorno-editar').html(data.message);
+                } else if (data.error) {
+                    $('#mensagem-retorno-editar').html(data.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#mensagem-retorno-editar').html('Erro: ' + error);
+            }
+        });
+    });
+    
 });

@@ -34,18 +34,17 @@ $alunos = $alunoController->listaAlunos();
                         <td><?= htmlspecialchars($aluno['email']) ?></td>
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
                         <td>                
-                        <button type="button" class="btn btn-sm" id="btn-editar" 
-                                data-id="<?= $aluno['id']; ?>" 
-                                data-nome="<?= htmlspecialchars($aluno['nome']); ?>"
-                                data-data-nascimento="<?= htmlspecialchars($aluno['data_nascimento']); ?>"
-                                data-usuario-cpf="<?= htmlspecialchars($aluno['usuario_cpf']); ?>"
-                                data-email="<?= htmlspecialchars($aluno['email']); ?>"
-                                data-telefone="<?= htmlspecialchars($aluno['telefone']); ?>"
-                                data-toggle="modal" 
-                                data-target="#modal-editar-aluno">
-                            Editar
-                        </button>
-             
+                            <button type="button" class="btn btn-sm" id="btn-editar" 
+                                    data-id="<?= $aluno['id']; ?>" 
+                                    data-nome="<?= ($aluno['nome']); ?>"
+                                    data-data-nascimento="<?= ($aluno['data_nascimento']); ?>"
+                                    data-usuario-cpf="<?= ($aluno['usuario_cpf']); ?>"
+                                    data-email="<?= ($aluno['email']); ?>"
+                                    data-telefone="<?= ($aluno['telefone']); ?>"
+                                    data-toggle="modal" 
+                                    data-target="#modal-editar-aluno">
+                                Editar
+                            </button>             
                         </td>                 
                     </tr>
                 <?php } ?>
@@ -57,4 +56,5 @@ $alunos = $alunoController->listaAlunos();
 </div>
 <?php
     include 'editar.php'; // modal de edição?>
+    
 
