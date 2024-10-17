@@ -384,6 +384,11 @@ footer {
     text-align: center;
 }
 
+#btn-excluir {
+    background: red ;
+    color: white;
+}
+
 
 
 

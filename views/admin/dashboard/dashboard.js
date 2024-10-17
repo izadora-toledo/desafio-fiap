@@ -66,11 +66,11 @@ $(document).ready(function () {
             url: "../alunos/action.php",
             data: $(this).serialize() + '&acao=cadastrar',
             dataType: "json", 
-            success: function (response) {
-                if (response.error) {                   
-                    $('#mensagem-retorno-cadastro').html('<div style="color:red;">' + response.error + '</div>');                
+            success: function (data) {
+                if (data.error) {                   
+                    $('#mensagem-retorno-cadastro').html('<div style="color:red;">' + data.error + '</div>');                
                 } else {                   
-                    $('#mensagem-retorno-cadastro').html('<div style="color:green;">' + response.message + '</div>');
+                    $('#mensagem-retorno-cadastro').html('<div style="color:green;">' + data.message + '</div>');
                     form.reset(); // Reseta o formulário usando a referência armazenada
                 }
             },
@@ -143,6 +143,31 @@ $(document).ready(function () {
                 $('#mensagem-retorno-editar').html('Erro: ' + error);
             }
         });
+    });
+
+    // Exclui o aluno
+    $(document).on('click', '.btn-excluir', function () {
+        const id = $(this).data('id');
+        
+        if (confirm('Tem certeza que deseja excluir este aluno?')) {
+            $.ajax({
+                type: 'POST',
+                url: '../alunos/action.php',
+                data: { acao: 'excluir', id: id },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.message) {
+                        alert(data.message);
+                        location.reload();
+                    } else {
+                        alert(data.error);                        
+                    }
+                },
+                error: function () {
+                    alert('Erro ao processar a solicitação.');
+                }
+            });
+        }
     });
     
 });

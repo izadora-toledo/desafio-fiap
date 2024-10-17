@@ -45,6 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo json_encode(['message' => '<div class="msg-sucesso">Aluno atualizado com sucesso.</div>']);
                     }
                     break;
+
+                case 'excluir':
+                    $id = $_POST['id'];
+                    $resultado = $controller->excluiAluno($id);
+    
+                    if ($resultado === false) {
+                        echo json_encode(['error' => 'Erro ao excluir o aluno.']);
+                    } else {
+                        echo json_encode(['message' => 'Aluno excluído com sucesso.']);
+                    }
+                    break;
             default:
                 echo '<div class="msg-erro">Ação não reconhecida.</div>';
                 break;

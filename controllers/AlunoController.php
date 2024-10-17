@@ -28,7 +28,16 @@ class AlunoController {
         } catch (Exception $e) {
             return false;
         }
-    }     
+    }
+    
+    public function excluiAluno($id) {
+        try {
+            $aluno = new Aluno("", "", "", "", "", $id); // Apenas o ID é necessário
+            return $aluno->excluirAluno();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
       
 }
 ?>

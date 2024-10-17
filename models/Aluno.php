@@ -140,6 +140,32 @@ class Aluno {
             return false;
         }
     }
+
+    // Método para excluir um aluno
+    public function excluirAluno() {
+        global $conn;
+    
+        try {           
+            $sql = "SELECT COUNT(*) FROM alunos WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $this->id);
+            $stmt->execute();
+            $alunoExists = $stmt->fetchColumn();
+    
+            if ($alunoExists == 0) {
+                throw new Exception("Aluno não encontrado.");
+            }    
+         
+            $sql = "DELETE FROM alunos WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $this->id);
+            $stmt->execute();
+    
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
     
 }
 ?>

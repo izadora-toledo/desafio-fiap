@@ -43,9 +43,10 @@ $alunos = $alunoController->listaAlunos();
                                     data-telefone="<?= ($aluno['telefone']); ?>"
                                     data-toggle="modal" 
                                     data-target="#modal-editar-aluno">
-                                Editar
-                            </button>             
-                        </td>                 
+                                    Editar
+                            </button>                     
+                            <button type="button" class="btn btn-sm btn-excluir" data-id="<?= $aluno['id']; ?>">Excluir</button>
+                        </td>                
                     </tr>
                 <?php } ?>
             </tbody>
