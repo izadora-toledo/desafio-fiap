@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 
     // Processa o login
-    $('#form-login').on('submit', function (e) {
+    $('#form-login .btn-logar').on('submit', function (e) {
         e.preventDefault();
 
         var usuario = $('#usuario').val();
@@ -40,26 +40,51 @@ $(document).ready(function () {
             }
         });
     });
-/* CADASTRO ALUNO */
+    /* CADASTRO ALUNO */
     // Processa o cadastro do aluno
-    $('#form-cadastro-alunos').on('submit', function(e) {
-        e.preventDefault(); 
-       
-        var dados_formulario = $(this).serialize();
+    $('#form-cadastro-alunos .btn-cadastrar-aluno').on('click', function (e) {
+        e.preventDefault();
+
+        const $form = $('#form-cadastro-alunos');
+        const $button = $(this);
+
+        // Se o botão já estiver desabilitado, não faz nada
+        if ($button.prop('disabled')) return;
+
+        // Desabilita o botão de submit para evitar múltiplos cliques
+        $button.prop('disabled', true);
+
+        // Limpa a área da mensagem de retorno antes de enviar o formulário
+        $('#mensagem-retorno-cadastro').html('');
 
         $.ajax({
             type: "POST",
-            url: "../alunos/action.php", 
-            data: dados_formulario,
-            success: function(response) {               
-                $('#mensagem-retorno-cadastro').html(response);
-                $('#form-cadastro-alunos')[0].reset(); 
+            url: "../alunos/action.php",
+            data: $form.serialize() + '&acao=cadastrar',
+            dataType: "json", // Espera um JSON como resposta
+            success: function (response) {
+                if (response.error) {
+                    // Exibe mensagem de erro
+                    $('#mensagem-retorno-cadastro').html('<div style="color:red;">' + response.error + '</div>');
+                    // Não limpa o formulário se houver erro
+                } else {
+                    // Exibe mensagem de sucesso
+                    $('#mensagem-retorno-cadastro').html('<div style="color:green;">' + response.message + '</div>');
+                    $form[0].reset(); // Reseta o formulário somente se o cadastro for bem-sucedido
+                }
             },
-            error: function(xhr, status, error) {                
-                $('#mensagem-retorno-cadastro').html("Erro: " + error);
+            error: function (xhr, status, error) {
+                $('#mensagem-retorno-cadastro').html('<div style="color:red;">Erro: ' + error + '</div>');
+            },
+            complete: function () {
+                // Habilita o botão novamente após a resposta
+                $button.prop('disabled', false);
             }
         });
     });
+    
+    
+    
 
     // Máscara de CPF
     $('#usuario_cpf').on('input', function() {
@@ -79,7 +104,7 @@ $(document).ready(function () {
             $(this).val(cpf);
         }
     });
-/* PAINEL ADMINISTRATIVO */
+    /* PAINEL ADMINISTRATIVO */
     // Trata as abas do painel administrativo          
     // Define a aba ativa com base no hash da URL
     var hash = window.location.hash;
@@ -121,5 +146,42 @@ $(document).ready(function () {
         if (sectionId && sectionId !== '#') {
             $(sectionId).show();
         }       
-    });    
+    });  
+    
+    $('.btn-editar').on('click', function () {    
+        $('#modal-editar-aluno').modal('show');       
+        var alunoId = $(this).data('id');
+        // Carregando o conteúdo do editar.php dentro do modal
+        $.ajax({
+            url: '../alunos/editar.php?id=' + alunoId, 
+            method: 'GET',
+            success: function(data) {             
+                $('#conteudo-modal').html(data); 
+            },
+            error: function(xhr, status, error) {
+                $('#conteudo-modal').html('<div class="alert alert-danger">Erro ao carregar os dados do aluno.</div>');
+            }
+        });
+    });
+
+    $('.btn-fechar').on('click', function() {
+        $('#modal-editar-aluno').modal('hide');
+    });
+
+    $('#form-editar-aluno .btn-editar-aluno').on('submit', function (e) {
+        e.preventDefault();
+    
+        $.ajax({
+            url: '../alunos/action.php',
+            method: 'POST',
+            data: $(this).serialize() + '&acao=editar',
+            success: function (response) {
+                $('#mensagem-retorno-editar').html(response);
+            },
+            error: function () {
+                $('#mensagem-retorno-editar').html('<div class="alert alert-danger">Erro ao editar o aluno.</div>');
+            }
+        });
+    });
+   
 });

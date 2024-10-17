@@ -7,6 +7,10 @@ body {
     color: #303030;
 }
 
+label {
+    font-weight: bold;
+}
+
 /* Estilização da tela de login */
 .container-login {        
     border-radius: 20px;  
@@ -163,11 +167,11 @@ footer {
     margin-bottom: 20px; 
 }
 
-.btn-cadastrar {
+.btn-cadastrar, .btn-atualizar {
     text-align: center;
 }
 
-.btn-cadastrar button {
+.btn-cadastrar button, .btn-atualizar button {
     width: 200px;
     padding: 10px;
     font-size: 16px;
@@ -183,7 +187,7 @@ footer {
     box-shadow: 0 10px 20px 0 rgb(0 0 0 / 23%);   
 }
 
-.btn-cadastrar button:hover {
+.btn-cadastrar button:hover, .btn-atualizar button:hover {
     opacity: 50%;
     color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
@@ -345,3 +349,25 @@ footer {
     text-align: center;
     margin-bottom: 50px;
 }
+
+.btn-editar {
+    background:#bd18e6 ;
+    color: white;
+}
+
+.modal-dialog.custom-width {
+    max-width: 55%; 
+}
+
+.btn-fechar {
+    color: black;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    border-radius: 45%;
+}
+
+
+

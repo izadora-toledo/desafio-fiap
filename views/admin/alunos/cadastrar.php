@@ -46,7 +46,7 @@ include "../../../public/includes/header.php";
             </div>
         </div>
         <div class="btn-cadastrar">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-cadastrar-aluno">Cadastrar</button>
         </div>        
     </form>
     <div id="mensagem-retorno-cadastro" class="mt-3"></div>

@@ -1,12 +1,6 @@
 <?php 
 include "../../../controllers/AlunoController.php"; 
 
-
-// if (!isset($_SESSION['id_usuario'])) {     
-//     header('Location: ../login/index.php');
-//     exit;
-// }
-
 $id_aluno = $_GET['id'] ?? null; 
 $aluno = []; 
 
