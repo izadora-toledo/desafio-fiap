@@ -1,14 +1,8 @@
 <?php 
-$title = "Listar Alunos";
-include '../../../public/includes/header.php'; 
-require '../../../public/includes/funcoes.php';
-
 if (!isset($_SESSION['id_usuario'])) {
     header('Location: ../login/index.php');
     exit;
 }
-
-require_once __DIR__ . '/../../../controllers/AlunoController.php';
 
 $alunoController = new AlunoController();
 $alunos = $alunoController->listaAlunos();
@@ -27,7 +21,7 @@ $alunos = $alunoController->listaAlunos();
                     <th>Usuário</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <th>Ações</th> <!-- Nova coluna para ações -->
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,8 +33,19 @@ $alunos = $alunoController->listaAlunos();
                         <td><?= htmlspecialchars($aluno['usuario_cpf']) ?></td>
                         <td><?= htmlspecialchars($aluno['email']) ?></td>
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
-                        <td>                     
-                            <button class="btn btn-sm btn-editar" data-id="<?= $aluno['id']; ?>">Editar</button>                 
+                        <td>                
+                        <button type="button" class="btn btn-sm" id="btn-editar" 
+                                data-id="<?= $aluno['id']; ?>" 
+                                data-nome="<?= htmlspecialchars($aluno['nome']); ?>"
+                                data-data-nascimento="<?= htmlspecialchars($aluno['data_nascimento']); ?>"
+                                data-usuario-cpf="<?= htmlspecialchars($aluno['usuario_cpf']); ?>"
+                                data-email="<?= htmlspecialchars($aluno['email']); ?>"
+                                data-telefone="<?= htmlspecialchars($aluno['telefone']); ?>"
+                                data-toggle="modal" 
+                                data-target="#modal-editar-aluno">
+                            Editar
+                        </button>
+             
                         </td>                 
                     </tr>
                 <?php } ?>
@@ -50,23 +55,6 @@ $alunos = $alunoController->listaAlunos();
         <p>Nenhum aluno encontrado.</p>
     <?php } ?>
 </div>
-<div id="modal-editar-aluno" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog custom-width" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Aluno</h5>            
-                <button type="button" class="close btn-fechar" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>            
-            </div>
-            <div class="modal-body">
-                <div id="conteudo-modal"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-fechar" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-    </div>
-</div>
+<?php
+    include 'editar.php'; // modal de edição?>
 
-<?php require '../../../public/includes/footer.php'; ?>

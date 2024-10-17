@@ -19,7 +19,7 @@
                             <input type="password" id="senha" name="senha" placeholder="senha" required>
                             <i id="toggle-senha" class="fas fa-lock"></i>
                         </div>                
-                        <button type="submit" class="mt-4 btn-logar">Entrar ></button>
+                        <button type="submit" class="mt-4">Entrar></button>
                     </form>
                     <a class="recuperar-senha mt-4 mb-4" href="#">Esqueceu sua senha?</a>                        
                 </div>
@@ -28,4 +28,5 @@
     </div>
 </div>
 <?php require "../../../public/includes/footer.php"; ?>
+<script src="login.js"></script>
 

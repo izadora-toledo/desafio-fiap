@@ -231,7 +231,7 @@ footer {
     text-decoration: none;
 }
 
-.dropdown-toggle {
+.dropdown-toggle, .nav-link {
     background-color: white;
     padding: 10px 20px;
     margin: 0 10px;
@@ -243,7 +243,7 @@ footer {
     text-decoration: none !important;
 }
 
-.dropdown-toggle:hover {
+.dropdown-toggle:hover, .nav-link:hover {
     opacity: 80%;
     background: linear-gradient(45deg, #4b25ea, #bd18e6, #fb590e) !important;
     background-clip: text !important;

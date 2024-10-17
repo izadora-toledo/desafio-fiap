@@ -1,7 +1,4 @@
 <?php 
-$title = "Cadastrar alunos";
-include "../../../public/includes/header.php"; 
-
     if (!isset($_SESSION['id_usuario'])) {     
         header('Location: ../login/index.php');
         exit;
@@ -51,4 +48,4 @@ include "../../../public/includes/header.php";
     </form>
     <div id="mensagem-retorno-cadastro" class="mt-3"></div>
 </div>
-<?php require '../../../public/includes/footer.php'; ?>
+
