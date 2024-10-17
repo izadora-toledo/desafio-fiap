@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/Aluno.php';
 
 class AlunoController {
     
-    public function cadastrarAluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone) {
+    public function cadastraAluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone) {
         
         try {
             $aluno = new Aluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone);
@@ -14,7 +14,7 @@ class AlunoController {
         }
     }
     
-    public function listarAlunos() {
+    public function listaAlunos() {
         try {
             $alunos = Aluno::listarAlunos();
             return $alunos;
@@ -22,5 +22,14 @@ class AlunoController {
             return '<div style="color:red;">Erro ao listar alunos: </div>' . $e->getMessage();
         }
     }
+    
+    public function buscaAlunoPorId($id) {
+        try {
+            return Aluno::buscarAlunoPorId($id);
+        } catch (Exception $e) {
+            return ["error" => "Erro ao buscar aluno: " . $e->getMessage()];
+        }
+    }
+    
 }
 ?>

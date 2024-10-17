@@ -75,5 +75,22 @@ class Aluno {
             throw new Exception("Erro ao listar alunos: " . $e->getMessage());
         }
     }
+    
+    public static function buscarAlunoPorId($id) {
+        global $conn;
+
+        try {
+            $sql = "SELECT * FROM alunos WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $aluno;
+
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao buscar aluno: " . $e->getMessage());
+        }
+    }
 }
 ?>
