@@ -8,9 +8,18 @@ class AlunoController {
         try {
             $aluno = new Aluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone);
             $aluno->inserirAluno();
-            return "Aluno cadastrado com sucesso!";
+            return '<div style="color:green;">Aluno cadastrado com sucesso!</div>';
         } catch (Exception $e) {
-            return "Erro ao cadastrar aluno: " . $e->getMessage();
+            return '<div style="color:red;">Erro ao cadastrar aluno: </div>' . $e->getMessage();
+        }
+    }
+    
+    public function listarAlunos() {
+        try {
+            $alunos = Aluno::listarAlunos();
+            return $alunos;
+        } catch (Exception $e) {
+            return '<div style="color:red;">Erro ao listar alunos: </div>' . $e->getMessage();
         }
     }
 }
