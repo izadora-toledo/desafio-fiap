@@ -1,6 +1,7 @@
 <?php 
 $title = "Listar Alunos";
-include "../../../public/includes/header.php"; 
+include '../../../public/includes/header.php'; 
+require '../../../public/includes/funcoes.php';
 
 if (!isset($_SESSION['id_usuario'])) {
     header('Location: ../login/index.php');
@@ -8,6 +9,7 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 require_once __DIR__ . '/../../../controllers/AlunoController.php';
+
 $alunoController = new AlunoController();
 $alunos = $alunoController->listarAlunos();
 ?>
@@ -29,8 +31,8 @@ $alunos = $alunoController->listarAlunos();
             <tbody>
                 <?php foreach ($alunos as $aluno): ?>
                     <tr>
-                        <td><?= htmlspecialchars($aluno['nome']) ?></td>
-                        <td><?= htmlspecialchars($aluno['data_nascimento']) ?></td>
+                        <td><?= htmlspecialchars(strtoupper($aluno['nome'])) ?></td>
+                        <td><?= htmlspecialchars(Funcoes::converterDataParaBR($aluno['data_nascimento'])) ?></td>
                         <td><?= htmlspecialchars($aluno['usuario_cpf']) ?></td>
                         <td><?= htmlspecialchars($aluno['email']) ?></td>
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
