@@ -19,6 +19,15 @@ CREATE TABLE alunos (
     telefone VARCHAR(15) NULL
 );
 
+CREATE TABLE turmas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_turma VARCHAR(100) NOT NULL,
+    data_inicio DATE NOT NULL,
+    codigo_turma VARCHAR(20) NOT NULL UNIQUE,
+    curso VARCHAR(100) NOT NULL,
+    turno ENUM('manhã', 'tarde', 'noite') NOT NULL
+);
+
 
 INSERT INTO usuarios (usuario, senha, email) VALUES
 ('admin', '$2y$10$jcKgOPufI3fyrOzlJnhmnugg08yauNfutBwNillioN2Byg3/tgO7.', 'admin@fiap.com');

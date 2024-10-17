@@ -42,10 +42,10 @@
                 </div>
             </div>
         </div>
-        <div class="btn-cadastrar">
+        <div class="cadastrar-aluno">
             <button type="submit" class="btn btn-cadastrar-aluno">Cadastrar</button>
         </div>        
     </form>
-    <div id="mensagem-retorno-cadastro" class="mt-3"></div>
+    <div id="mensagem-retorno-cadastro-aluno" class="mt-3"></div>
 </div>
 

@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         // Reseta os campos do formulário ao trocar de aba
         $('#form-cadastro-alunos')[0].reset(); // Reseta o formulário de cadastro ao trocar de aba
-        $('#mensagem-retorno-cadastro').html(''); // Limpa a mensagem de retorno
+        $('#mensagem-retorno-cadastro-aluno').html(''); // Limpa a mensagem de retorno
 
         // Atualiza a URL com o hash da aba ativa
         window.location.hash = tabContentId;
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
             // Reseta os campos do formulário ao trocar de seção
             $('#form-cadastro-alunos')[0].reset(); // Reseta o formulário de cadastro ao trocar de seção
-            $('#mensagem-retorno-cadastro').html(''); // Limpa a mensagem de retorno
+            $('#mensagem-retorno-cadastro-aluno').html(''); // Limpa a mensagem de retorno
 
             // Atualiza a URL com o hash da aba ativa
             window.location.hash = sectionId;
@@ -58,7 +58,7 @@ $(document).ready(function () {
     $('#form-cadastro-alunos').on('submit', function (e) {
         e.preventDefault();      
     
-        $('#mensagem-retorno-cadastro').html('');   
+        $('#mensagem-retorno-cadastro-aluno').html('');   
         var form = this; // Armazena uma referência ao formulário
     
         $.ajax({
@@ -68,14 +68,14 @@ $(document).ready(function () {
             dataType: "json", 
             success: function (data) {
                 if (data.error) {                   
-                    $('#mensagem-retorno-cadastro').html('<div style="color:red;">' + data.error + '</div>');                
+                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">' + data.error + '</div>');                
                 } else {                   
-                    $('#mensagem-retorno-cadastro').html('<div style="color:green;">' + data.message + '</div>');
+                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:green;">' + data.message + '</div>');
                     form.reset(); // Reseta o formulário usando a referência armazenada
                 }
             },
             error: function (xhr, status, error) {
-                $('#mensagem-retorno-cadastro').html('<div style="color:red;">Erro: ' + error + '</div>');
+                $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">Erro: ' + error + '</div>');
             }
         });
     });
@@ -134,13 +134,13 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {            
                 if (data.message) {
-                    $('#mensagem-retorno-editar').html(data.message);
+                    $('#mensagem-retorno-editar-aluno').html(data.message);
                 } else if (data.error) {
-                    $('#mensagem-retorno-editar').html(data.error);
+                    $('#mensagem-retorno-editar-aluno').html(data.error);
                 }
             },
             error: function(xhr, status, error) {
-                $('#mensagem-retorno-editar').html('Erro: ' + error);
+                $('#mensagem-retorno-editar-aluno').html('Erro: ' + error);
             }
         });
     });
@@ -169,5 +169,34 @@ $(document).ready(function () {
             });
         }
     });
+
+    /* CADASTRO TURMA */
+
+    $('#form-cadastro-turmas').on('submit', function (e) {
+        e.preventDefault();      
+    
+        $('#mensagem-retorno-cadastro-turma').html('');   
+        var form = this; // Armazena uma referência ao formulário
+    
+        $.ajax({
+            type: "POST",
+            url: "../turmas/action.php",
+            data: $(this).serialize() + '&acao=cadastrar',
+            dataType: "json", 
+            success: function (data) {
+                if (data.error) {                   
+                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">' + data.error + '</div>');                
+                } else {                   
+                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:green;">' + data.message + '</div>');
+                    form.reset(); // Reseta o formulário usando a referência armazenada
+                }
+            },
+            error: function (xhr, status, error) {
+                $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">Erro: ' + error + '</div>');
+            }
+        });
+    });
+    
+    
     
 });

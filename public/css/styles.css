@@ -153,7 +153,7 @@ footer {
 }
 
 /* Estilização da tela de cadastrar alunos */
-.cadastro-alunos {
+.cadastro-alunos, .cadastro-turmas {
     width: 50%; 
     height: 400px;
     margin: 50px auto; 
@@ -162,16 +162,16 @@ footer {
     background-color: #ffffff; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
-.cadastro-alunos h2 {
+.cadastro-alunos h2, .cadastro-turmas h2 {
     text-align: center; 
     margin-bottom: 20px; 
 }
 
-.btn-cadastrar, .btn-atualizar {
+.cadastrar-aluno, .atualizar-aluno, .cadastrar-turma {
     text-align: center;
 }
 
-.btn-cadastrar button, .btn-atualizar button {
+.cadastrar-aluno button, .atualizar-aluno button, .cadastrar-turma button {
     width: 200px;
     padding: 10px;
     font-size: 16px;
@@ -187,14 +187,14 @@ footer {
     box-shadow: 0 10px 20px 0 rgb(0 0 0 / 23%);   
 }
 
-.btn-cadastrar button:hover, .btn-atualizar button:hover {
+.cadastrar-aluno button:hover, .atualizar-aluno button:hover, .cadastrar-turma button:hover {
     opacity: 50%;
     color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
 
-#mensagem-retorno-cadastro {
+#mensagem-retorno-cadastro-aluno {
     text-align: center;
 }
 

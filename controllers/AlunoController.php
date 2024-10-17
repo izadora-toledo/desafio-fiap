@@ -32,7 +32,7 @@ class AlunoController {
     
     public function excluiAluno($id) {
         try {
-            $aluno = new Aluno("", "", "", "", "", $id); // Apenas o ID é necessário
+            $aluno = new Aluno("", "", "", "", "", $id); 
             return $aluno->excluirAluno();
         } catch (Exception $e) {
             return false;

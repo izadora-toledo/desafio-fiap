@@ -44,12 +44,12 @@
                                 <input type="tel" class="form-control mt-2" id="telefone" name="telefone" required>
                             </div>
                         </div>
-                        <div class="btn-atualizar">
+                        <div class="atualizar-aluno">
                             <button type="submit" class="btn btn-editar-aluno mt-4">Salvar</button>
                         </div>
                     </div>   
                 </form>
-                <div id="mensagem-retorno-editar" class="mt-3"></div>
+                <div id="mensagem-retorno-editar-aluno" class="mt-3"></div>
                 </div>
             </div>
             <div class="modal-footer">
