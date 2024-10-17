@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    /* LOGIN */
     // Trata o icone de cadeado na tela de login
     const $senha = $('#senha');
     const $toggleSenha = $('#toggle-senha');
@@ -40,7 +40,7 @@ $(document).ready(function () {
             }
         });
     });
-
+/* CADASTRO ALUNO */
     // Processa o cadastro do aluno
     $('#form-cadastro-alunos').on('submit', function(e) {
         e.preventDefault(); 
@@ -79,7 +79,7 @@ $(document).ready(function () {
             $(this).val(cpf);
         }
     });
-
+/* PAINEL ADMINISTRATIVO */
     // Trata as abas do painel administrativo          
     // Define a aba ativa com base no hash da URL
     var hash = window.location.hash;
@@ -120,37 +120,6 @@ $(document).ready(function () {
         // Verifica se o href não é "#", e então mostra a seção correspondente
         if (sectionId && sectionId !== '#') {
             $(sectionId).show();
-        }
-
-        // Atualiza o texto do dropdown com o nome da opção selecionada
-        var selectedText = $(this).text();
-        $('#dropdown-dashboard').text(selectedText);
-
-        // Adiciona a opção "Dashboard" ao dropdown se não estiver presente
-        if ($('#dropdown-dashboard-menu .dropdown-item[href="#dashboard"]').length === 0) {
-            $('#dropdown-dashboard-menu').prepend('<a href="#dashboard" class="dropdown-item">Dashboard</a>');
-        }
-    });
-
-    // Adiciona a funcionalidade de clique na opção "Dashboard" no dropdown
-    $('#dropdown-dashboard-menu').on('click', '.dropdown-item[href="#dashboard"]', function(event) {
-        event.preventDefault();              
-        $('#dropdown-dashboard').text('Dashboard');        
-        $('.dropdown-item').removeClass('active');       
-        $('.tab-content').hide();    
-        $('#dashboard').show();      
-        $('.tab-link').removeClass('active');
-        $('#dropdown-dashboard').addClass('active');
-    });
-
-    // Restaura o texto do dropdown para "Dashboard" e remove a classe 'active' das opções
-    $('#dropdown-dashboard').click(function(event) {
-        event.preventDefault();           
-        $(this).text('Dashboard');         
-        $('.dropdown-item').removeClass('active');              
-        $('.tab-content').hide();       
-        $('#dashboard').show();  
-        $('.tab-link').removeClass('active');
-        $(this).addClass('active');
-    });  
+        }       
+    });    
 });
