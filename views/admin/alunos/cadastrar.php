@@ -1,6 +1,11 @@
 <?php 
 $title = "Cadastrar alunos";
 include "../../../public/includes/header.php"; 
+
+    if (!isset($_SESSION['id_usuario'])) {     
+        header('Location: ../login/index.php');
+        exit;
+    }
 ?>
 <div class="cadastro-alunos mt-5">
     <h2>Cadastrar Aluno</h2>

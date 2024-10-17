@@ -298,7 +298,7 @@ footer {
 }
 
 .menu h2 {        
-    background: linear-gradient(45deg, #bd18e6, #fb590e, #bd18e6, #4b25ea, #bd18e6, #4b25ea);
+    background: linear-gradient(45deg, #fb590e, #bd18e6, #4b25ea,#bd18e6, #4b25ea);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -338,4 +338,10 @@ footer {
 
 .col-md-6 {
     padding: 0;
+}
+
+/* Estilização da tela de listar alunos */
+.listar-alunos h2 {
+    text-align: center;
+    margin-bottom: 50px;
 }

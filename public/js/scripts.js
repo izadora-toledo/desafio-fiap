@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 
     // Processa o login
-    $('form-login').on('submit', function (e) {
+    $('#form-login').on('submit', function (e) {
         e.preventDefault();
 
         var usuario = $('#usuario').val();
@@ -49,7 +49,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "action.php", 
+            url: "../alunos/action.php", 
             data: dados_formulario,
             success: function(response) {               
                 $('#mensagem-retorno-cadastro').html(response);
