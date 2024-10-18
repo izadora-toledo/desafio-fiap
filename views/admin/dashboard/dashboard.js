@@ -24,8 +24,12 @@ $(document).ready(function () {
         $(tabContentId).show();
 
         // Reseta os campos do formulário ao trocar de aba
-        $('#form-cadastro-alunos')[0].reset(); // Reseta o formulário de cadastro ao trocar de aba
-        $('#mensagem-retorno-cadastro-aluno').html(''); // Limpa a mensagem de retorno
+        $('#form-cadastro-alunos')[0].reset(); 
+        $('#form-cadastro-turmas')[0].reset();
+        $('#form-matricula-alunos')[0].reset();
+        $('#mensagem-retorno-cadastro-aluno').html(''); 
+        $('#mensagem-retorno-cadastro-turma').html('');
+        $('#mensagem-retorno-matricula').html('');
 
         // Atualiza a URL com o hash da aba ativa
         window.location.hash = tabContentId;
@@ -111,11 +115,11 @@ $(document).ready(function () {
         var telefone = $(this).data('telefone');    
      
         $('#modal-editar-aluno #id').val(id); 
-        $('#modal-editar-aluno #nome').val(nome);
-        $('#modal-editar-aluno #data_nascimento').val(dataNascimento);
-        $('#modal-editar-aluno #usuario_cpf').val(usuarioCpf);
-        $('#modal-editar-aluno #email').val(email);
-        $('#modal-editar-aluno #telefone').val(telefone);    
+        $('#modal-editar-aluno #nome_editar').val(nome);
+        $('#modal-editar-aluno #data_nascimento_editar').val(dataNascimento);
+        $('#modal-editar-aluno #usuario_cpf_editar').val(usuarioCpf);
+        $('#modal-editar-aluno #email_editar').val(email);
+        $('#modal-editar-aluno #telefone_editar').val(telefone);    
       
         $('#modal-editar-aluno').modal('show'); 
     });
@@ -213,11 +217,11 @@ $(document).ready(function () {
         var turno = $(this).data('turno');
         
         $('#modal-editar-turma #id').val(id);
-        $('#modal-editar-turma #nome_turma').val(nomeTurma);
-        $('#modal-editar-turma #codigo_turma').val(codigoTurma);
-        $('#modal-editar-turma #curso').val(curso);
-        $('#modal-editar-turma #data_inicio').val(dataInicio);
-        $('#modal-editar-turma #turno').val(turno);
+        $('#modal-editar-turma #nome_turma_editar').val(nomeTurma);
+        $('#modal-editar-turma #codigo_turma_editar').val(codigoTurma);
+        $('#modal-editar-turma #curso_editar').val(curso);
+        $('#modal-editar-turma #data_inicio_editar').val(dataInicio);
+        $('#modal-editar-turma #turno_editar').val(turno);
         
         $('#modal-editar-turma').modal('show');
     });   
@@ -297,6 +301,14 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.tab-link[href="#listar-alunos-matriculados-por-turma"]').click(function() {    
+        $('#turma_id option[value=""]').prop('selected', true);
+        $('#curso_matricula').val(''); 
+        $('#turno_matricula').val(''); 
+        $('#codigo_turma_matricula').val(''); 
+        $('#tabela-alunos-matriculados-turma').hide();
+    });   
 });
 
 function carregarListaAlunos() {
@@ -304,8 +316,7 @@ function carregarListaAlunos() {
         url: "../alunos/listar.php", 
         type: "GET",
         dataType: "html", 
-        success: function (data) {
-            console.log(data);
+        success: function (data) {           
             $('#listar-alunos').html(data);
         },
         error: function (xhr, status, error) {
@@ -319,8 +330,7 @@ function carregarListaTurmas() {
         url: "../turmas/listar.php", 
         type: "GET",
         dataType: "html", 
-        success: function (data) {
-            console.log(data);
+        success: function (data) {           
             $('#listar-turmas').html(data); 
         },
         error: function (xhr, status, error) {
@@ -334,13 +344,13 @@ function carregarListaMatriculas() {
         url: "../matriculas/listar.php", 
         type: "GET",
         dataType: "html", 
-        success: function (data) {
-            console.log(data);
+        success: function (data) {       
             $('#listar-alunos-matriculados-turma').html(data); 
         },
         error: function (xhr, status, error) {
             console.log("Erro ao carregar a lista de alunos: " + error);
         }
     });
+
 }
 

@@ -1,8 +1,4 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 include "../../../controllers/TurmaController.php"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
             case 'editar':                    
                 $id = $_POST['id'];
-                $nome_turma = $_POST['nome_turma'];
-                $data_inicio = $_POST['data_inicio'];
-                $codigo_turma = $_POST['codigo_turma'];
-                $curso = $_POST['curso'];
-                $turno = $_POST['turno'];                
+                $nome_turma = $_POST['nome_turma_editar'];
+                $data_inicio = $_POST['data_inicio_editar'];
+                $codigo_turma = $_POST['codigo_turma_editar'];
+                $curso = $_POST['curso_editar'];
+                $turno = $_POST['turno_editar'];                
              
                 $resultado = $controller->editaTurma($nome_turma, $data_inicio, $codigo_turma, $curso, $turno, $id);                    
 

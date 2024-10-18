@@ -1,8 +1,8 @@
 <?php 
-    require_once __DIR__ . '/../../../controllers/AlunoController.php';
-    require_once '../../../public/includes/funcoes.php'; 
-    $alunoController = new AlunoController();
-    $alunos = $alunoController->listaAlunos();
+require_once __DIR__ . '/../../../controllers/AlunoController.php';
+require_once '../../../public/includes/funcoes.php'; 
+$alunoController = new AlunoController();
+$alunos = $alunoController->listaAlunos();
 ?>
 
 <div class="listar-alunos mt-5">

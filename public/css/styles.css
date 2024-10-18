@@ -340,6 +340,11 @@ footer {
     align-items: center;
 }
 
+.dashboard-fiap {
+    text-align: center;
+    font-size: 60px;
+}
+
 /* Estilização da tela de listar alunos */
 .listar-alunos h2, .listar-turmas h2, .listar-alunos-matriculados-turma h2 {
     text-align: center;

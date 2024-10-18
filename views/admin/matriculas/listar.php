@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once __DIR__ . '/../../../controllers/TurmaController.php';
 require_once __DIR__ . '/../../../controllers/MatriculaController.php';
 require_once '../../../public/includes/funcoes.php'; 
@@ -26,7 +26,7 @@ if ($turma_id_selecionada) {
                 <select id="turma_id" name="turma_id" class="form-control" onchange="this.form.submit()">
                     <option value="">-- Selecione uma turma --</option>
                     <?php if (is_array($turmas) && count($turmas) > 0) { ?>
-                        <?php foreach ($turmas as $turma_item) { // Renomear variável para evitar conflito ?>
+                        <?php foreach ($turmas as $turma_item) { ?>
                             <option value="<?= $turma_item['id']; ?>" <?= ($turma_item['id'] == $turma_id_selecionada) ? 'selected' : ''; ?>>
                                 <?= htmlspecialchars($turma_item['nome_turma']); ?>
                             </option>
@@ -50,7 +50,7 @@ if ($turma_id_selecionada) {
     </form>
 
     <?php if (is_array($alunos) && count($alunos) > 0) { ?>
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="tabela-alunos-matriculados-turma">
             <thead>
                 <tr>
                     <th>Id</th>

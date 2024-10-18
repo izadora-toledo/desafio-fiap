@@ -2,15 +2,15 @@
 require_once __DIR__ . '/../../../controllers/AlunoController.php';
 require_once __DIR__ . '/../../../controllers/TurmaController.php';
 require_once '../../../public/includes/funcoes.php'; 
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['id_usuario'])) {     
-        header('Location: ../login/index.php');
-        exit;
-    }
+if (!isset($_SESSION['id_usuario'])) {     
+    header('Location: ../login/index.php');
+    exit;
+}
 
-    $title = "Painel Administrativo";
-    include "../../../public/includes/header.php"; 
+$title = "Painel Administrativo";
+include "../../../public/includes/header.php"; 
 ?>
 <div class="menu row">
     <div class="col-md-3">
@@ -64,7 +64,7 @@ require_once '../../../public/includes/funcoes.php';
     <!-- BOTÃO SAIR -->
     <div class="col-md-1">           
         <button class="btn logout">
-            <a class="btn-logout" href="logout.php">Sair</a>
+            <a class="btn-logout" href="../login/logout.php">Sair</a>
         </button>
     </div>
 </div>
@@ -72,7 +72,7 @@ require_once '../../../public/includes/funcoes.php';
 <div class="container-fluid">
     <div class="row">
         <div class="tab-content" id="dashboard">
-            <?php include_once "index.php"; ?>
+            <?php include_once "dashboard.php"; ?>
         </div>
         <div class="tab-content" id="cadastrar-aluno">
             <?php include_once "../alunos/cadastrar.php"; ?>

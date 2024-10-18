@@ -15,13 +15,13 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label for="nome_turma">Nome da Turma:</label>
-                                <input type="text" class="form-control" id="nome_turma" name="nome_turma" placeholder="Nome da Turma" value="" required>
+                                <input type="text" class="form-control" id="nome_turma_editar" name="nome_turma_editar" placeholder="Nome da Turma" value="" required>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="codigo_turma">Código da Turma:</label>
-                                <input type="text" class="form-control" id="codigo_turma" name="codigo_turma" placeholder="Código" value="" required>
+                                <input type="text" class="form-control" id="codigo_turma_editar" name="codigo_turma_editar" placeholder="Código" value="" required>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="curso">Curso:</label>
-                                <select class="form-control mt-2" id="curso" name="curso" required>
+                                <select class="form-control mt-2" id="curso_editar" name="curso_editar" required>
                                     <option value="">-- Selecione o Curso --</option>
                                     <option value="Desenvolvimento Web">Desenvolvimento Web</option>
                                     <option value="Análise de Dados">Análise de Dados</option>
@@ -45,13 +45,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="data_inicio">Data de Início:</label>
-                                <input type="date" class="form-control mt-2" id="data_inicio" name="data_inicio" required>
+                                <input type="date" class="form-control mt-2" id="data_inicio_editar" name="data_inicio_editar" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="turno">Turno:</label>
-                                <select class="form-control mt-2" id="turno" name="turno" required>
+                                <select class="form-control mt-2" id="turno_editar" name="turno_editar" required>
                                     <option value="">-- Selecione o Turno --</option>
                                     <option value="manhã">Manhã</option>
                                     <option value="tarde">Tarde</option>

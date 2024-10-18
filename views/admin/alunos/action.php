@@ -1,8 +1,4 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 include "../../../controllers/AlunoController.php"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

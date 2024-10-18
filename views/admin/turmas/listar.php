@@ -1,8 +1,8 @@
 <?php 
-    require_once '../../../public/includes/funcoes.php'; 
-    require_once __DIR__ . '/../../../controllers/TurmaController.php';
-    $turmaController = new TurmaController();
-    $turmas = $turmaController->listaTurmas();
+require_once '../../../public/includes/funcoes.php'; 
+require_once __DIR__ . '/../../../controllers/TurmaController.php';
+$turmaController = new TurmaController();
+$turmas = $turmaController->listaTurmas();
 ?>
 
 <div class="listar-turmas mt-5">

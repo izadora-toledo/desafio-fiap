@@ -15,8 +15,7 @@ $(document).ready(function () {
 
     // Processa o login
     $('#form-login').on('submit', function (e) {
-        e.preventDefault();
-        console.log('oi');
+        e.preventDefault();     
         var usuario = $('#usuario').val();
         var senha = $('#senha').val();
 

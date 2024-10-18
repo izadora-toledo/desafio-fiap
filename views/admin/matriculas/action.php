@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         switch ($_POST['acao']) {
             case 'cadastrar':          
                 $aluno_id = $_POST['aluno_id'];
-                $turma_id = $_POST['turma_id'];
+                $id_turma = $_POST['id_turma'];
                 $data_matricula = $_POST['data_matricula'];
                 $status = $_POST['status'];
              
-                $resultado = $controller->cadastraMatricula($aluno_id, $turma_id, $data_matricula, $status); 
+                $resultado = $controller->cadastraMatricula($aluno_id, $id_turma, $data_matricula, $status); 
                 if ($resultado === true) {
                     echo json_encode(['message' => '<div class="msg-sucesso">Matrícula cadastrada com sucesso.</div>']);
                 } else {

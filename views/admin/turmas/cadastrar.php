@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['id_usuario'])) {     
+    header('Location: ../login/index.php');
+    exit;
+}
+?>
 <div class="cadastro-turmas mt-5">
     <h2>Cadastrar Turma</h2>
     <form id="form-cadastro-turmas">

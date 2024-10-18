@@ -1,6 +1,10 @@
 <?php 
-    require_once __DIR__ . '/../../../controllers/AlunoController.php';
-    require_once __DIR__ . '/../../../controllers/TurmaController.php';
+if (!isset($_SESSION['id_usuario'])) {     
+    header('Location: ../login/index.php');
+    exit;
+}
+require_once __DIR__ . '/../../../controllers/AlunoController.php';
+require_once __DIR__ . '/../../../controllers/TurmaController.php';
 ?>
 <div class="matricula-alunos mt-5">
     <h2>Matricular Aluno</h2>
@@ -23,8 +27,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="turma_id">Selecionar Turma:</label>
-                    <select class="form-control" id="turma_id" name="turma_id" required>
+                    <label for="id_turma">Selecionar Turma:</label>
+                    <select class="form-control" id="id_turma" name="id_turma" required>
                         <option value="">-- Selecione a Turma --</option>
                         <?php                        
                         $turmaController = new TurmaController();

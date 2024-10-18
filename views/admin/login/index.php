@@ -1,6 +1,6 @@
 <?php 
-    $title = "Login - Painel Administrativo"; 
-    include "../../../public/includes/header.php"; 
+$title = "Login - Painel Administrativo"; 
+include "../../../public/includes/header.php"; 
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -28,5 +28,6 @@
     </div>
 </div>
 <?php require "../../../public/includes/footer.php"; ?>
-<script src="login.js"></script>
+<script src="/desafio-fiap/views/admin/login/login.js"></script>
+
 
