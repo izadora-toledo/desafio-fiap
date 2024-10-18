@@ -38,6 +38,25 @@ class AlunoController {
             return false;
         }
     }
+
+    public function listaAlunosPorPagina($pagina = 1, $limite = 5) {
+        try {        
+            $offset = ($pagina - 1) * $limite;   
+         
+            $alunos = Aluno::listarAlunosPorPagina($limite, $offset);    
+            $totalAlunos = Aluno::contarAlunos();
+            $totalPaginas = ceil($totalAlunos / $limite);
+    
+            return [
+                'alunos' => $alunos,
+                'totalPaginas' => $totalPaginas,
+                'paginaAtual' => $pagina
+            ];
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+    
       
 }
 ?>

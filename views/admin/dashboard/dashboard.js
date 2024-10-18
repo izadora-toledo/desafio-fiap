@@ -309,6 +309,24 @@ $(document).ready(function () {
         $('#codigo_turma_matricula').val(''); 
         $('#tabela-alunos-matriculados-turma').hide();
     });   
+
+    $(document).on('click', '.page-link', function(e) {
+        e.preventDefault();        
+        var pagina = $(this).data('pagina'); 
+    
+        $.ajax({
+            url: '../alunos/listar.php', 
+            type: 'GET',
+            data: { pagina: pagina },
+            success: function(response) {
+            
+                $('.listar-alunos').html(response);
+            },
+            error: function() {
+                alert('Erro ao carregar os dados.');
+            }
+        });
+    });   
 });
 
 function carregarListaAlunos() {

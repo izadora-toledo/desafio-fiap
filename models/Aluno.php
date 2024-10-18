@@ -170,6 +170,38 @@ class Aluno {
             return false;
         }
     }
-    
+
+    // Método para listar alunos com paginação
+    public static function listarAlunosPorPagina($limite, $offset) {
+        global $conn;
+
+        try {
+            $sql = "SELECT * FROM alunos ORDER BY nome ASC LIMIT :limite OFFSET :offset";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $alunos;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    // Método para contar o total de alunos
+    public static function contarAlunos() {
+        global $conn;
+
+        try {
+            $sql = "SELECT COUNT(*) FROM alunos";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }    
 }
 ?>

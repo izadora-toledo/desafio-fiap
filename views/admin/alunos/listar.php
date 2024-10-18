@@ -1,10 +1,20 @@
 <?php 
 require_once __DIR__ . '/../../../controllers/AlunoController.php';
 require_once '../../../public/includes/funcoes.php'; 
+
 $alunoController = new AlunoController();
-$alunos = $alunoController->listaAlunos();
+
+// Captura a página atual da URL, se não existir, define como 1
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$limite = 5;
+
+// Obtém a lista de alunos e informações de paginação
+$resultado = $alunoController->listaAlunosPorPagina($pagina, $limite);
+$alunos = $resultado['alunos'];
+$totalPaginas = $resultado['totalPaginas'];
 ?>
 
+<!-- Conteúdo atualizado com AJAX -->
 <div class="listar-alunos mt-5">
     <h2>Lista de Alunos</h2>
 
@@ -48,10 +58,16 @@ $alunos = $alunoController->listaAlunos();
                 <?php } ?>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                    <li class="page-item <?= ($i == $pagina) ? 'active' : ''; ?>">
+                        <a class="page-link" href="#" data-pagina="<?= $i; ?>"><?= $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+            </ul>
+        </nav>        
     <?php } else { ?>
         <p>Nenhum aluno encontrado.</p>
     <?php } ?>
 </div>
-<?php include 'editar.php'; // modal de edição?>
-    
-
