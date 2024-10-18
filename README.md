@@ -64,6 +64,6 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
 - A autenticação não está completamente implementada, então algumas páginas só estão acessíveis para usuários logados e outras não.
 - A paginação foi aplicada apenas na lista do menu **Alunos**.
 
-## 🫂 Agradecimentos
+## 💗 Agradecimentos
 
 Agradeço a oportunidade e estou ansiosa para trabalhar com a Techlead Vanessa e os demais membros da equipe. Estou à disposição para tirar qualquer dúvida. Boa sorte para mim!
