@@ -38,5 +38,14 @@ class TurmaController {
             return false;
         }
     }
+
+    // Método para buscar turma por ID
+    public function buscarTurmaPorId($id) {
+        try {
+            return Turma::buscarTurmaPorId($id);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 ?>

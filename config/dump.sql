@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS matriculas (
     aluno_id INT NOT NULL,
     turma_id INT NOT NULL,
     data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('ativa', 'cancelada') DEFAULT 'ativa',
+    status ENUM('ativa', 'inativo') DEFAULT 'ativa',
     FOREIGN KEY (aluno_id) REFERENCES alunos(id),
     FOREIGN KEY (turma_id) REFERENCES turmas(id),
     UNIQUE (aluno_id, turma_id)  

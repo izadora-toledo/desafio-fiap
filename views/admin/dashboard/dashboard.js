@@ -70,7 +70,8 @@ $(document).ready(function () {
                 if (data.message) {                   
                     $('#mensagem-retorno-cadastro-aluno').html('<div style="color:green;">' + data.message + '</div>');  
                     form.reset(); 
-                    carregarListaAlunos();               
+                    carregarListaAlunos();  
+                    carregarListaMatriculas();             
                 } else {                   
                     $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">' + data.error + '</div>');                   
                 }
@@ -136,6 +137,7 @@ $(document).ready(function () {
             success: function(data) {            
                 if (data.message) {
                     $('#mensagem-retorno-editar-aluno').html(data.message);
+                    carregarListaMatriculas();
                     location.reload();
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-aluno').html(data.error);
@@ -189,7 +191,8 @@ $(document).ready(function () {
                 if (data.message) {                   
                     $('#mensagem-retorno-cadastro-turma').html('<div style="color:green;">' + data.message + '</div>');   
                     form.reset(); 
-                    carregarListaTurmas();             
+                    carregarListaTurmas();       
+                    carregarListaMatriculas();      
                 } else {                   
                     $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">' + data.error + '</div>');                    
                 }
@@ -230,6 +233,7 @@ $(document).ready(function () {
             success: function(data) {            
                 if (data.message) {
                     $('#mensagem-retorno-editar-turma').html(data.message);
+                    carregarListaMatriculas();
                     location.reload();
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-turma').html(data.error);
@@ -264,7 +268,35 @@ $(document).ready(function () {
                 }
             });
         }
-    });   
+    });
+    
+    /* MATRÍCULA ALUNO */
+
+    $('#form-matricula-alunos').on('submit', function (e) {
+        e.preventDefault();      
+
+        $('#mensagem-retorno-matricula').html('');   
+        var form = this; 
+
+        $.ajax({
+            type: "POST",
+            url: "../matriculas/action.php",
+            data: $(this).serialize() + '&acao=cadastrar',
+            dataType: "json", 
+            success: function (data) {
+                if (data.message) {                   
+                    $('#mensagem-retorno-matricula').html('<div style="color:green;">' + data.message + '</div>');  
+                    form.reset();
+                    carregarListaMatriculas();                    
+                } else {                   
+                    $('#mensagem-retorno-matricula').html('<div style="color:red;">' + data.error + '</div>');                   
+                }
+            },
+            error: function (xhr, status, error) {
+                $('#mensagem-retorno-matricula').html('<div style="color:red;">Erro: ' + error + '</div>');
+            }
+        });
+    });
 });
 
 function carregarListaAlunos() {
@@ -290,6 +322,21 @@ function carregarListaTurmas() {
         success: function (data) {
             console.log(data);
             $('#listar-turmas').html(data); 
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
+
+function carregarListaMatriculas() {
+    $.ajax({
+        url: "../matriculas/listar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {
+            console.log(data);
+            $('#listar-alunos-matriculados-turma').html(data); 
         },
         error: function (xhr, status, error) {
             console.log("Erro ao carregar a lista de alunos: " + error);

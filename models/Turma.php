@@ -58,6 +58,8 @@ class Turma {
             return true; 
         } catch (PDOException $e) {           
             return false; 
+        } catch (Exception $e) {
+            throw $e; 
         }
     }   
    
@@ -130,6 +132,8 @@ class Turma {
             return true;
         } catch (PDOException $e) {
             return false;
+        } catch (Exception $e) {
+            throw $e; 
         }
     }
 
@@ -156,8 +160,24 @@ class Turma {
             return true;
         } catch (PDOException $e) {
             return false;
-        }
+        } 
     }
-    
+
+    // Método para buscar uma turma pelo ID
+    public static function buscarTurmaPorId($id) {
+        global $conn;
+
+        try {
+            $sql = "SELECT * FROM turmas WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            $turma = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $turma;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }    
 }
 ?>

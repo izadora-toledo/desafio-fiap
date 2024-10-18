@@ -62,6 +62,8 @@ class Aluno {
             return true; 
         } catch (PDOException $e) {           
             return false; 
+        } catch (Exception $e) {
+            throw $e; 
         }
     }   
     
@@ -138,6 +140,8 @@ class Aluno {
             return true;
         } catch (PDOException $e) {
             return false;
+        } catch (Exception $e) {
+            throw $e; 
         }
     }
 

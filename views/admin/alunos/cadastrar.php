@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <div class="cadastro-alunos mt-5">
     <h2>Cadastrar Aluno</h2>
     <form id="form-cadastro-alunos">
