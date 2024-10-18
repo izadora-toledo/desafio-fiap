@@ -100,7 +100,7 @@ $(document).ready(function () {
     });
 
     
-    $(document).on('click', '#btn-editar', function() {
+    $(document).on('click', '#btn-editar-lista-aluno', function() {
       
         var id = $(this).data('id');
         var nome = $(this).data('nome');
@@ -121,6 +121,7 @@ $(document).ready(function () {
     
     $('.btn-fechar').on('click', function() {
         $('#modal-editar-aluno').modal('hide');
+        $('#modal-editar-turma').modal('hide');
     });
 
     // Envio do formulário para editar o aluno
@@ -146,7 +147,7 @@ $(document).ready(function () {
     });
 
     // Exclui o aluno
-    $(document).on('click', '.btn-excluir', function () {
+    $(document).on('click', '#btn-excluir-aluno', function () {
         const id = $(this).data('id');
         
         if (confirm('Tem certeza que deseja excluir este aluno?')) {
@@ -196,7 +197,45 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click', '#btn-editar-lista-turma', function() {
     
+        var id = $(this).data('id');
+        var nomeTurma = $(this).data('nome-turma');
+        var codigoTurma = $(this).data('codigo-turma');
+        var curso = $(this).data('curso');
+        var dataInicio = $(this).data('data-inicio');
+        var turno = $(this).data('turno');
+        
+        $('#modal-editar-turma #id').val(id);
+        $('#modal-editar-turma #nome_turma').val(nomeTurma);
+        $('#modal-editar-turma #codigo_turma').val(codigoTurma);
+        $('#modal-editar-turma #curso').val(curso);
+        $('#modal-editar-turma #data_inicio').val(dataInicio);
+        $('#modal-editar-turma #turno').val(turno);
+        
+        $('#modal-editar-turma').modal('show');
+    });   
+
+    $('#form-editar-turma').on('submit', function(event) {
+        event.preventDefault();        
     
+        $.ajax({
+            url: '../turmas/action.php', 
+            type: 'POST',
+            data: $(this).serialize() + '&acao=editar',
+            dataType: 'json',
+            success: function(data) {            
+                if (data.message) {
+                    $('#mensagem-retorno-editar-turma').html(data.message);
+                } else if (data.error) {
+                    $('#mensagem-retorno-editar-turma').html(data.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#mensagem-retorno-editar-turma').html('Erro: ' + error);
+            }
+        });
+    });    
     
 });

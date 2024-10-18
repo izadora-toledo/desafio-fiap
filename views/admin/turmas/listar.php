@@ -34,7 +34,7 @@ $turmas = $turmaController->listaTurmas();
                         <td><?= htmlspecialchars(Funcoes::converterDataParaBR($turma['data_inicio'])) ?></td>
                         <td><?= htmlspecialchars($turma['turno']) ?></td>
                         <td>                
-                            <button type="button" class="btn btn-sm" id="btn-editar" 
+                            <button type="button" class="btn btn-sm" id="btn-editar-lista-turma" 
                                 data-id="<?= $turma['id']; ?>" 
                                 data-nome-turma="<?= ($turma['nome_turma']); ?>"
                                 data-codigo-turma="<?= ($turma['codigo_turma']); ?>"
@@ -45,7 +45,7 @@ $turmas = $turmaController->listaTurmas();
                                 data-target="#modal-editar-turma">
                                 Editar
                             </button>                     
-                            <button type="button" class="btn btn-sm" id="btn-excluir" data-id="<?= $turma['id']; ?>">Excluir</button>
+                            <button type="button" class="btn btn-sm btn-excluir" id="btn-excluir-turma" data-id="<?= $turma['id']; ?>">Excluir</button>
                         </td>                
                     </tr>
                 <?php } ?>
@@ -55,4 +55,5 @@ $turmas = $turmaController->listaTurmas();
         <p>Nenhuma turma encontrada.</p>
     <?php } ?>
 </div>
+<?php include 'editar.php'; // modal de edição?>
 

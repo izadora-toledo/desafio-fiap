@@ -167,11 +167,11 @@ footer {
     margin-bottom: 20px; 
 }
 
-.cadastrar-aluno, .atualizar-aluno, .cadastrar-turma {
+.cadastrar-aluno, .atualizar-aluno, .cadastrar-turma, .atualizar-turma {
     text-align: center;
 }
 
-.cadastrar-aluno button, .atualizar-aluno button, .cadastrar-turma button {
+.cadastrar-aluno button, .atualizar-aluno button, .cadastrar-turma button, .atualizar-turma button {
     width: 200px;
     padding: 10px;
     font-size: 16px;
@@ -340,17 +340,13 @@ footer {
     align-items: center;
 }
 
-.col-md-6 {
-    padding: 0;
-}
-
 /* Estilização da tela de listar alunos */
 .listar-alunos h2, .listar-turmas h2 {
     text-align: center;
     margin-bottom: 50px;
 }
 
-#btn-editar {
+#btn-editar-lista-aluno, #btn-editar-lista-turma {
     background:#bd18e6 ;
     color: white;
 }
@@ -384,7 +380,7 @@ footer {
     text-align: center;
 }
 
-#btn-excluir {
+.btn-excluir {
     background: red ;
     color: white;
 }

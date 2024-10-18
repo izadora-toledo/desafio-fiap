@@ -34,7 +34,7 @@ $alunos = $alunoController->listaAlunos();
                         <td><?= htmlspecialchars($aluno['email']) ?></td>
                         <td><?= htmlspecialchars($aluno['telefone']) ?></td>
                         <td>                
-                            <button type="button" class="btn btn-sm" id="btn-editar" 
+                            <button type="button" class="btn btn-sm" id="btn-editar-lista-aluno" 
                                 data-id="<?= $aluno['id']; ?>" 
                                 data-nome="<?= ($aluno['nome']); ?>"
                                 data-data-nascimento="<?= ($aluno['data_nascimento']); ?>"
@@ -45,7 +45,7 @@ $alunos = $alunoController->listaAlunos();
                                 data-target="#modal-editar-aluno">
                                 Editar
                             </button>                     
-                            <button type="button" class="btn btn-sm" id="btn-excluir" data-id="<?= $aluno['id']; ?>">Excluir</button>
+                            <button type="button" class="btn btn-sm btn-excluir" id="btn-excluir-aluno" data-id="<?= $aluno['id']; ?>">Excluir</button>
                         </td>                
                     </tr>
                 <?php } ?>
@@ -55,7 +55,6 @@ $alunos = $alunoController->listaAlunos();
         <p>Nenhum aluno encontrado.</p>
     <?php } ?>
 </div>
-<?php
-    include 'editar.php'; // modal de edição?>
+<?php include 'editar.php'; // modal de edição?>
     
 
