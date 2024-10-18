@@ -6,6 +6,7 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
 
 1. **Instalar o XAMPP**: Durante a instalação, certifique-se de que a opção do MySQL está marcada.
 2. **Instalar o Git**: Para clonar o repositório.
+3. **Sistema operacional**: Windows.
 
 ## Rodando o Projeto
 
