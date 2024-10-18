@@ -57,21 +57,22 @@ $(document).ready(function () {
     // Processa o cadastro do aluno
     $('#form-cadastro-alunos').on('submit', function (e) {
         e.preventDefault();      
-    
+
         $('#mensagem-retorno-cadastro-aluno').html('');   
-        var form = this; // Armazena uma referência ao formulário
-    
+        var form = this; 
+
         $.ajax({
             type: "POST",
             url: "../alunos/action.php",
             data: $(this).serialize() + '&acao=cadastrar',
             dataType: "json", 
             success: function (data) {
-                if (data.error) {                   
-                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">' + data.error + '</div>');                
+                if (data.message) {                   
+                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:green;">' + data.message + '</div>');  
+                    form.reset(); 
+                    carregarListaAlunos();               
                 } else {                   
-                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:green;">' + data.message + '</div>');
-                    form.reset(); // Reseta o formulário usando a referência armazenada
+                    $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">' + data.error + '</div>');                   
                 }
             },
             error: function (xhr, status, error) {
@@ -98,8 +99,7 @@ $(document).ready(function () {
             $(this).val(cpf);
         }
     });
-
-    
+       
     $(document).on('click', '#btn-editar-lista-aluno', function() {
       
         var id = $(this).data('id');
@@ -121,7 +121,7 @@ $(document).ready(function () {
     
     $('.btn-fechar').on('click', function() {
         $('#modal-editar-aluno').modal('hide');
-        $('#modal-editar-turma').modal('hide');
+        $('#modal-editar-turma').modal('hide');       
     });
 
     // Envio do formulário para editar o aluno
@@ -136,6 +136,7 @@ $(document).ready(function () {
             success: function(data) {            
                 if (data.message) {
                     $('#mensagem-retorno-editar-aluno').html(data.message);
+                    location.reload();
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-aluno').html(data.error);
                 }
@@ -177,7 +178,7 @@ $(document).ready(function () {
         e.preventDefault();      
     
         $('#mensagem-retorno-cadastro-turma').html('');   
-        var form = this; // Armazena uma referência ao formulário
+        var form = this;
     
         $.ajax({
             type: "POST",
@@ -185,11 +186,12 @@ $(document).ready(function () {
             data: $(this).serialize() + '&acao=cadastrar',
             dataType: "json", 
             success: function (data) {
-                if (data.error) {                   
-                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">' + data.error + '</div>');                
+                if (data.message) {                   
+                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:green;">' + data.message + '</div>');   
+                    form.reset(); 
+                    carregarListaTurmas();             
                 } else {                   
-                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:green;">' + data.message + '</div>');
-                    form.reset(); // Reseta o formulário usando a referência armazenada
+                    $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">' + data.error + '</div>');                    
                 }
             },
             error: function (xhr, status, error) {
@@ -228,6 +230,7 @@ $(document).ready(function () {
             success: function(data) {            
                 if (data.message) {
                     $('#mensagem-retorno-editar-turma').html(data.message);
+                    location.reload();
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-turma').html(data.error);
                 }
@@ -237,5 +240,61 @@ $(document).ready(function () {
             }
         });
     });    
+
+    // Exclui a turma
+    $(document).on('click', '#btn-excluir-turma', function () {
+        const id = $(this).data('id');
+        
+        if (confirm('Tem certeza que deseja excluir esta turma?')) {
+            $.ajax({
+                type: 'POST',
+                url: '../turmas/action.php',
+                data: { acao: 'excluir', id: id },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.message) {
+                        alert(data.message);
+                        location.reload();
+                    } else {
+                        alert(data.error);                        
+                    }
+                },
+                error: function () {
+                    alert('Erro ao processar a solicitação.');
+                }
+            });
+        }
+    });
     
 });
+
+function carregarListaAlunos() {
+    $.ajax({
+        url: "../alunos/listar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {
+            console.log(data);
+            $('#listar-alunos').html(data);
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
+
+function carregarListaTurmas() {
+    $.ajax({
+        url: "../turmas/listar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {
+            console.log(data);
+            $('#listar-turmas').html(data); 
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
+
