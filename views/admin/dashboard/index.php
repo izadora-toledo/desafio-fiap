@@ -99,5 +99,6 @@ require_once '../../../public/includes/funcoes.php';
         </div>
     </div>
 </div>
+
 <?php include '../../../public/includes/footer.php'; ?>
 <script src="dashboard.js"></script>

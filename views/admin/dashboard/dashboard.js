@@ -264,8 +264,7 @@ $(document).ready(function () {
                 }
             });
         }
-    });
-    
+    });   
 });
 
 function carregarListaAlunos() {

@@ -28,6 +28,16 @@ CREATE TABLE turmas (
     turno ENUM('manhã', 'tarde', 'noite') NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS matriculas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    turma_id INT NOT NULL,
+    data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('ativa', 'cancelada') DEFAULT 'ativa',
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id),
+    FOREIGN KEY (turma_id) REFERENCES turmas(id),
+    UNIQUE (aluno_id, turma_id)  
+);
 
 INSERT INTO usuarios (usuario, senha, email) VALUES
 ('admin', '$2y$10$jcKgOPufI3fyrOzlJnhmnugg08yauNfutBwNillioN2Byg3/tgO7.', 'admin@fiap.com');
