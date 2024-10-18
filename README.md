@@ -15,6 +15,7 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
 2. **Iniciar o XAMPP**:
    - Entre na pasta do XAMPP e procure por `xampp-control.exe`, e clique para abrir.
    - Clique em **Start** para os serviços **Apache** e **MySQL**.
+   - O acesso ao mysql se mantem o padrão que já vem quando é instalado, que é o usuario: root e a senha vazia.
 
 3. **Acessar a pasta `htdocs`**:
    - Na pasta do XAMPP, localize a pasta `htdocs`.
