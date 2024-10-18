@@ -61,7 +61,7 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
 
 ## Observações
 
-- A autenticação não está completamente implementada, então algumas páginas só estão acessíveis para usuários logados.
+- A autenticação não está completamente implementada, então algumas páginas só estão acessíveis para usuários logados e outras não.
 - A paginação foi aplicada apenas na lista do menu **Alunos**.
 
 ## Agradecimentos
