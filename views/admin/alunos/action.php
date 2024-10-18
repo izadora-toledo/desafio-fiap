@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 case 'editar':                    
                     $id = $_POST['id'];
-                    $nome = $_POST['nome'];
-                    $data_nascimento = $_POST['data_nascimento'];
-                    $usuario_cpf = $_POST['usuario_cpf'];
-                    $email = $_POST['email'];
-                    $telefone = $_POST['telefone'];                    
+                    $nome = $_POST['nome_editar'];
+                    $data_nascimento = $_POST['data_nascimento_editar'];
+                    $usuario_cpf = $_POST['usuario_cpf_editar'];
+                    $email = $_POST['email_editar'];
+                    $telefone = $_POST['telefone_editar'];                    
                  
                     $resultado = $controller->editaAluno($nome, $data_nascimento, $usuario_cpf, $email, $telefone, $id);                    
                   

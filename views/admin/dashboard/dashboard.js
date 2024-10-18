@@ -73,9 +73,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.message) {                   
                     $('#mensagem-retorno-cadastro-aluno').html('<div style="color:green;">' + data.message + '</div>');  
-                    form.reset(); 
-                    carregarListaAlunos();  
-                    carregarListaMatriculas();             
+                    form.reset();                    
+                    reloadAlunoCadastrar();         
                 } else {                   
                     $('#mensagem-retorno-cadastro-aluno').html('<div style="color:red;">' + data.error + '</div>');                   
                 }
@@ -106,7 +105,7 @@ $(document).ready(function () {
     });
        
     $(document).on('click', '#btn-editar-lista-aluno', function() {
-      
+        console.log('oi');
         var id = $(this).data('id');
         var nome = $(this).data('nome');
         var dataNascimento = $(this).data('data-nascimento');
@@ -140,9 +139,9 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {            
                 if (data.message) {
-                    $('#mensagem-retorno-editar-aluno').html(data.message);
-                    carregarListaMatriculas();
-                    location.reload();
+                    $('#mensagem-retorno-editar-aluno').html(data.message);  
+                    carregarListaAlunos();
+                    location.reload();                  
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-aluno').html(data.error);
                 }
@@ -194,9 +193,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.message) {                   
                     $('#mensagem-retorno-cadastro-turma').html('<div style="color:green;">' + data.message + '</div>');   
-                    form.reset(); 
-                    carregarListaTurmas();       
-                    carregarListaMatriculas();      
+                    form.reset();                     
+                    reloadTurmaCadastrar();   
                 } else {                   
                     $('#mensagem-retorno-cadastro-turma').html('<div style="color:red;">' + data.error + '</div>');                    
                 }
@@ -236,9 +234,9 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {            
                 if (data.message) {
-                    $('#mensagem-retorno-editar-turma').html(data.message);
-                    carregarListaMatriculas();
-                    location.reload();
+                    $('#mensagem-retorno-editar-turma').html(data.message); 
+                    carregarListaTurmas();
+                    location.reload();                   
                 } else if (data.error) {
                     $('#mensagem-retorno-editar-turma').html(data.error);
                 }
@@ -291,7 +289,7 @@ $(document).ready(function () {
                 if (data.message) {                   
                     $('#mensagem-retorno-matricula').html('<div style="color:green;">' + data.message + '</div>');  
                     form.reset();
-                    carregarListaMatriculas();                    
+                    reloadMatriculaCadastrar();                       
                 } else {                   
                     $('#mensagem-retorno-matricula').html('<div style="color:red;">' + data.error + '</div>');                   
                 }
@@ -318,8 +316,7 @@ $(document).ready(function () {
             url: '../alunos/listar.php', 
             type: 'GET',
             data: { pagina: pagina },
-            success: function(response) {
-            
+            success: function(response) {            
                 $('.listar-alunos').html(response);
             },
             error: function() {
@@ -328,6 +325,54 @@ $(document).ready(function () {
         });
     });   
 });
+
+function reloadAlunoCadastrar() {
+    $.ajax({
+        url: "../alunos/cadastrar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {       
+            setTimeout(function() {
+                location.reload();
+            }, 500); 
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
+
+function reloadTurmaCadastrar() {
+    $.ajax({
+        url: "../turmas/cadastrar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {       
+            setTimeout(function() {
+                location.reload();
+            }, 500); 
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
+
+function reloadMatriculaCadastrar() {
+    $.ajax({
+        url: "../matriculas/cadastrar.php", 
+        type: "GET",
+        dataType: "html", 
+        success: function (data) {       
+            setTimeout(function() {
+                location.reload();
+            }, 500); 
+        },
+        error: function (xhr, status, error) {
+            console.log("Erro ao carregar a lista de alunos: " + error);
+        }
+    });
+}
 
 function carregarListaAlunos() {
     $.ajax({
@@ -355,20 +400,5 @@ function carregarListaTurmas() {
             console.log("Erro ao carregar a lista de alunos: " + error);
         }
     });
-}
-
-function carregarListaMatriculas() {
-    $.ajax({
-        url: "../matriculas/listar.php", 
-        type: "GET",
-        dataType: "html", 
-        success: function (data) {       
-            $('#listar-alunos-matriculados-turma').html(data); 
-        },
-        error: function (xhr, status, error) {
-            console.log("Erro ao carregar a lista de alunos: " + error);
-        }
-    });
-
 }
 

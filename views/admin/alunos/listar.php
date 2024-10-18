@@ -71,3 +71,4 @@ $totalPaginas = $resultado['totalPaginas'];
         <p>Nenhum aluno encontrado.</p>
     <?php } ?>
 </div>
+<?php include 'editar.php'; // modal de edição?>
