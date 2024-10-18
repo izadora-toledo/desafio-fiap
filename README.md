@@ -1,14 +1,14 @@
-# Desafio FIAP
+# 🎯 Desafio FIAP
 
 Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instruções para rodar o projeto e algumas informações adicionais sobre seu funcionamento.
 
-## Requisitos para Rodar o Projeto
+## ✅ Requisitos para Rodar o Projeto
 
 1. **Instalar o XAMPP**: Durante a instalação, certifique-se de que a opção do MySQL está marcada.
 2. **Instalar o Git**: Para clonar o repositório.
 3. **Sistema operacional**: Windows.
 
-## Rodando o Projeto
+## 🖥️ Rodando o Projeto
 
 1. **Localizar a pasta do XAMPP**: O caminho de instalação padrão é: `C:\xampp`.
 
@@ -44,7 +44,7 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
      - **Senha**: `fiap@2024`
    - Após logar, você será direcionado para a tela do dashboard.
 
-## Funcionalidades
+## 🛠️ Funcionalidades
 
 - Criei cadastros ficticios em todas as tabelas para ficar melhor de testar o projeto, mas fique a vontade em criar usando os passos abaixo.
 
@@ -59,11 +59,11 @@ Este repositório contém o projeto do Desafio da FIAP. Abaixo estão as instru�
   - Acesse o menu **Matrículas** e clique em **Cadastrar Aluno em Turma**. Preencha os dados necessários e clique em **Matricular**.
   - Para ver os alunos matriculados em uma turma específica, volte ao menu **Matrículas** e clique em **Listar Matrículas por Turma**. Selecione a turma para visualizar os alunos registrados.
 
-## Observações
+## 📋 Observações
 
 - A autenticação não está completamente implementada, então algumas páginas só estão acessíveis para usuários logados e outras não.
 - A paginação foi aplicada apenas na lista do menu **Alunos**.
 
-## Agradecimentos
+## 🫂 Agradecimentos
 
 Agradeço a oportunidade e estou ansiosa para trabalhar com a Techlead Vanessa e os demais membros da equipe. Estou à disposição para tirar qualquer dúvida. Boa sorte para mim!
